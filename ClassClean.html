@@ -5,19 +5,46 @@
 </head>
 <body>
 <div class="main-div">
-      <div class="heading">ClassClean</div>
-	         <div class="string-type-box">
-					<div class="string-type-label">Look for:</div>
-					<div class="checkbox-holder">
-					  <input class="string-type-checkbox" type="checkbox" value="classes">Classes
-					</div>
-					<div class="checkbox-holder">
-					  <input class="string-type-checkbox" type="checkbox" value="ids">Ids
-					</div>
-			  </div>
-			  <div style="clear:both;"></div>
-      <input type="file" id="web-page">
-	  <input type="file" id="css-page">
+     <div class="heading">ClassClean</div>
+	 <div class="string-type-box">
+			<div class="string-type-label">Look for:</div>
+			<div class="checkbox-holder">
+			  <input class="string-type-checkbox" type="checkbox" value="classes">Classes
+			</div>
+			<div class="checkbox-holder">
+			  <input class="string-type-checkbox" type="checkbox" value="ids">Ids
+			</div>
+	  </div>
+	<div class="file-uploaders">
+		  <input type="file" id="web-page">
+		  <input type="file" id="css-page">
+	</div>
 </div>
+
+<script type="text/javascript">
+document.getElementById('web-page').addEventListener('change', readFile, false);
+document.getElementById('css-page').addEventListener('change', readFile, false);
+
+function readFile(evt) {
+   
+    var f = evt.target.files[0]; 
+
+    if (f) {
+		  var r = new FileReader();
+		  r.onload = function(e) { 
+			  var contents = e.target.result;
+			  alert( "chosen file = " + f.name);  
+			  alert( contents.substr(1, contents.indexOf(10)));
+		  }
+      r.readAsText(f);
+    } 
+	else { 
+          alert("Failed to load file");
+    }
+  }
+  
+  
+</script>
+
 </body>
 </html>

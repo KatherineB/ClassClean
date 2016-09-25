@@ -8,7 +8,7 @@ html{
 	font-size: 3em;
 }
 .string-type-box{
-	margin-top: 7%;
+	margin-top: 5%;
 	text-align: left;
 	display: inline-block;
 	font-size: 1.6em;
@@ -20,4 +20,12 @@ input[type='checkbox'] {
     width: 22px;
     height: 22px;
     margin:5px;
+}
+#web-page{
+	margin-top: 2%;
+	font-size: 1.2em;
+}
+#css-page{
+	margin-top: 2%;
+	font-size: 1.2em;
 }
