@@ -16,12 +16,19 @@
 			</div>
 	  </div>
 	<div class="file-uploaders">
+	   <div class="file-input">
+	      Enter HTML file:<br>
 		  <input type="file" id="web-page">
+	   </div>
+	   <div class="file-input">
+	      Enter CSS file:<br>
 		  <input type="file" id="css-page">
+	   </div>
+       <div style="clear:both;"></div>
 	</div>
-</div>
 
 <script type="text/javascript">
+
 document.getElementById('web-page').addEventListener('change', readFile, false);
 document.getElementById('css-page').addEventListener('change', readFile, false);
 
@@ -33,10 +40,12 @@ function readFile(evt) {
 		  var r = new FileReader();
 		  r.onload = function(e) { 
 			  var contents = e.target.result;
-			  alert( "chosen file = " + f.name);  
-			  alert( contents.substr(1, contents.indexOf(10)));
+			 // alert( "chosen file = " + f.name);  
+			  alert(f.size);
+			  alert(f.type);
+			  //alert( contents.substr(1, contents.indexOf(10)));
 		  }
-      r.readAsText(f);
+     r.readAsText(f);
     } 
 	else { 
           alert("Failed to load file");
