@@ -28,6 +28,7 @@
 	</div>
 
 <script type="text/javascript">
+var htmlText = "";
 
 document.getElementById('web-page').addEventListener('change', readFile, false);
 document.getElementById('css-page').addEventListener('change', readFile, false);
@@ -45,11 +46,14 @@ function readFile(evt) {
 			  alert(f.type);
 			  //alert( contents.substr(1, contents.indexOf(10)));
 		  }
-     r.readAsText(f);
+    // r.readAsText(f);
+	htmlText = r.readAsText(f);
+	
     } 
 	else { 
           alert("Failed to load file");
     }
+	alert(htmlText);
   }
   
   
