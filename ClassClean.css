@@ -26,8 +26,8 @@ html{
 	margin-top: 0.3em;
 }
 input[type='checkbox'] {
-    width: 1.8em;
-    height: 1.8em;
+    width: 2em;
+    height: 2em;
     margin: 0.5em;
 }
 .file-input{
@@ -43,4 +43,40 @@ input[type='checkbox'] {
 #css-page{
 	margin-top: 0.5em;
 	font-size: 0.8em;
+}
+
+@media (min-width: 280px) 
+{
+   input[type='checkbox'] {
+	   width: 1.1em;
+       height: 1.1em;
+   } 
+}
+@media (min-width: 526px) 
+{
+   input[type='checkbox'] {
+	   width: 1.5em;
+       height: 1.5em;
+   } 
+}
+@media (min-width: 768px) 
+{
+   input[type='checkbox'] {
+	   width: 1.9em;
+       height: 1.9em;
+   } 
+}
+@media (min-width: 992px) 
+{
+   input[type='checkbox'] {
+	   width: 2.2em;
+       height: 2.2em;
+   } 
+}
+@media (min-width: 1200px) 
+{
+   input[type='checkbox'] {
+	   width: 2.5em;
+       height: 2.5em;
+   } 
 }
