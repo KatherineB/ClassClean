@@ -20,15 +20,19 @@ html{
 	margin-top: 1.5em;
 	text-align: left;
 	display: inline-block;
-	font-size: 1em;
+	font-size: 1.0em;
 }
 .checkbox-holder{
 	margin-top: 0.3em;
 }
+.checkbox-holder label{
+	margin-top: 0.3em;
+	font-size: 0.9em;
+}
 input[type='checkbox'] {
-    width: 2em;
-    height: 2em;
-    margin: 0.5em;
+    width: 2.0em;
+    height: 2.0em;
+    margin: 0em;
 }
 .file-input{
 	margin-top: 2em;
