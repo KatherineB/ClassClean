@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>ClassClean</title>
+<meta charset="utf-8"/>
 <link rel="stylesheet" href="ClassClean.css">
 </head>
 <body>
@@ -31,6 +32,7 @@
 
 <script type="text/javascript">
 var htmlText = "";
+var filetext;
 
 document.getElementById('web-page').addEventListener('change', readFile, false);
 document.getElementById('css-page').addEventListener('change', readFile, false);
@@ -43,20 +45,31 @@ function readFile(evt) {
 		  var r = new FileReader();
 		  r.onload = function(e) { 
 			  var contents = e.target.result;
-			 // alert( "chosen file = " + f.name);  
+                        //  alert(contents);
+			alert( "chosen file = " + f.name);  
 			  alert(f.size);
 			  alert(f.type);
-			  //alert( contents.substr(1, contents.indexOf(10)));
+                        //  alert( contents.substr(1, contents.indexOf(10)));
+                       //  filetext = contents.substr(1, contents.indexof(10));
+                           filetext = contents;
+			 // alert(filetext);
+                        
+                     
 		  }
-    // r.readAsText(f);
-	htmlText = r.readAsText(f);
+
+     r.readAsText(f);
+	//htmlText = r.readAsText(f);
+          
+                        
 	
     } 
-	else { 
+    else { 
           alert("Failed to load file");
     }
-	alert(htmlText);
-  }
+	//alert(htmlText);
+          
+        
+}
   
   
 </script>
