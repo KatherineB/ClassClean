@@ -19,20 +19,24 @@
 			</div>
 	  </div>
 	<div class="file-uploaders">
-	   <div class="file-input">
-	      Enter HTML file:<br>
-		  <input type="file" id="web-page">
-	   </div>
-	   <div class="file-input">
-	      Enter CSS file:<br>
-		  <input type="file" id="css-page">
-	   </div>
-       <div style="clear:both;"></div>
+		   <div class="file-input">
+			  Enter HTML file:<br>
+			  <input type="file" id="web-page">
+		   </div>
+		   <div class="file-input">
+			  Enter CSS file:<br>
+			  <input type="file" id="css-page">
+		   </div>
+		   <div style="clear:both;"></div>
+	</div>
+	<div class="button-box">
+	        <input type="button" id="test" value="Test" onClick="process()">
 	</div>
 
 <script type="text/javascript">
 var htmlText = "";
-var filetext;
+var cssText = "";
+//var filetext;
 
 document.getElementById('web-page').addEventListener('change', readFile, false);
 document.getElementById('css-page').addEventListener('change', readFile, false);
@@ -45,32 +49,39 @@ function readFile(evt) {
 		  var r = new FileReader();
 		  r.onload = function(e) { 
 			  var contents = e.target.result;
+			  var fileType = f.type;
+			  if (fileType.indexOf("html") !== -1){
+			      alert("Its html");
+				  htmlText = contents;
+				  alert(htmlText);
+			  }
+			  else if(fileType.indexOf("css") !== -1){
+			      alert("Its css");
+				  cssText = contents;
+				  alert(cssText);
+			  }
+			  
                         //  alert(contents);
-			alert( "chosen file = " + f.name);  
-			  alert(f.size);
-			  alert(f.type);
-                        //  alert( contents.substr(1, contents.indexOf(10)));
-                       //  filetext = contents.substr(1, contents.indexof(10));
-                           filetext = contents;
-			 // alert(filetext);
-                        
-                     
+			  //alert( "chosen file = " + f.name);  
+			  // alert(f.size);
+			  //alert(f.type);
+              //  alert( contents.substr(1, contents.indexOf(10)));
+              //  filetext = contents.substr(1, contents.indexof(10));
+              //filetext = contents;
+			        
 		  }
 
-     r.readAsText(f);
-	//htmlText = r.readAsText(f);
-          
-                        
-	
+     r.readAsText(f);	
     } 
     else { 
           alert("Failed to load file");
-    }
-	//alert(htmlText);
-          
-        
+    }      
 }
-  
+function process(){
+     alert("Test of process");
+	 alert(htmlText);
+	 alert(cssText);
+}
   
 </script>
 
