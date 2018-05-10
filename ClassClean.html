@@ -30,7 +30,7 @@
 		   <div style="clear:both;"></div>
 	</div>
 	<div class="button-box">
-	        <input type="button" id="test" value="Test" onClick="process()">
+	        <input type="button" class="process-btn" id="test" value="Process" onClick="process()">
 	</div>
 
 <script type="text/javascript">
@@ -79,9 +79,22 @@ function readFile(evt) {
     }      
 }
 function process(){
-     alert("Test of process");
-	 alert(cssText);
-	 alert(htmlText);
+    // alert("Test of process");
+	// alert(cssText);
+	// alert(htmlText);
+	  if (document.getElementById('class').checked){
+	      getClasses();
+	  }
+	  if (document.getElementById('id').checked){
+	      getIds();
+	  }
+}
+function getClasses(){
+      alert("in getClasses");
+}
+
+function getIds(){
+       alert("in getIds");
 }
   
 </script>
