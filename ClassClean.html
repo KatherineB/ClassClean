@@ -20,12 +20,12 @@
 	  </div>
 	<div class="file-uploaders">
 		   <div class="file-input">
-			  Enter HTML file:<br>
-			  <input type="file" id="web-page">
-		   </div>
-		   <div class="file-input">
 			  Enter CSS file:<br>
 			  <input type="file" id="css-page">
+		   </div>
+		   <div class="file-input">
+			  Enter HTML file:<br>
+			  <input type="file" id="web-page">
 		   </div>
 		   <div style="clear:both;"></div>
 	</div>
@@ -34,31 +34,32 @@
 	</div>
 
 <script type="text/javascript">
-var htmlText = "";
 var cssText = "";
+var htmlText = "";
 //var filetext;
 
-document.getElementById('web-page').addEventListener('change', readFile, false);
 document.getElementById('css-page').addEventListener('change', readFile, false);
+document.getElementById('web-page').addEventListener('change', readFile, false);
 
 function readFile(evt) {
    
-    var f = evt.target.files[0]; 
+    var inputFile = evt.target.files[0]; 
 
-    if (f) {
-		  var r = new FileReader();
-		  r.onload = function(e) { 
+    if (inputFile) {
+		  var readFile = new FileReader();
+		  readFile.onload = function(e) { 
 			  var contents = e.target.result;
-			  var fileType = f.type;
-			  if (fileType.indexOf("html") !== -1){
-			      alert("Its html");
-				  htmlText = contents;
-				  alert(htmlText);
-			  }
-			  else if(fileType.indexOf("css") !== -1){
+			  var fileType = inputFile.type;
+			  
+			  if(fileType.indexOf("css") !== -1){
 			      alert("Its css");
 				  cssText = contents;
 				  alert(cssText);
+			  }
+			  else if (fileType.indexOf("html") !== -1){
+			      alert("Its html");
+				  htmlText = contents;
+				  alert(htmlText);
 			  }
 			  
                         //  alert(contents);
@@ -71,7 +72,7 @@ function readFile(evt) {
 			        
 		  }
 
-     r.readAsText(f);	
+     readFile.readAsText(inputFile);	
     } 
     else { 
           alert("Failed to load file");
@@ -79,8 +80,8 @@ function readFile(evt) {
 }
 function process(){
      alert("Test of process");
-	 alert(htmlText);
 	 alert(cssText);
+	 alert(htmlText);
 }
   
 </script>
