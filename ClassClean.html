@@ -36,7 +36,6 @@
 <script type="text/javascript">
 var cssText = "";
 var htmlText = "";
-//var filetext;
 
 document.getElementById('css-page').addEventListener('change', readFile, false);
 document.getElementById('web-page').addEventListener('change', readFile, false);
@@ -52,24 +51,14 @@ function readFile(evt) {
 			  var fileType = inputFile.type;
 			  
 			  if(fileType.indexOf("css") !== -1){
-			      alert("Its css");
 				  cssText = contents;
 				  alert(cssText);
 			  }
 			  else if (fileType.indexOf("html") !== -1){
-			      alert("Its html");
 				  htmlText = contents;
 				  alert(htmlText);
 			  }
-			  
-                        //  alert(contents);
-			  //alert( "chosen file = " + f.name);  
-			  // alert(f.size);
-			  //alert(f.type);
-              //  alert( contents.substr(1, contents.indexOf(10)));
-              //  filetext = contents.substr(1, contents.indexof(10));
-              //filetext = contents;
-			        
+		
 		  }
 
      readFile.readAsText(inputFile);	
@@ -79,9 +68,7 @@ function readFile(evt) {
     }      
 }
 function process(){
-    // alert("Test of process");
-	// alert(cssText);
-	// alert(htmlText);
+
 	  if (document.getElementById('class').checked){
 	      getClasses();
 	  }
@@ -91,10 +78,17 @@ function process(){
 }
 function getClasses(){
       alert("in getClasses");
+	  //  alert( /\..*{/.exec(cssText));
+	  var regexpC = /\..*{/g;
+	  var classList = cssText.match(regexpC);
+	  alert(classList);
 }
-
 function getIds(){
        alert("in getIds");
+	  //  alert( /#.*{/.exec(cssText));
+	   var regexpI = /#.*{/g;
+	   var idList = cssText.match(regexpI);
+	   alert(idList);
 }
   
 </script>
