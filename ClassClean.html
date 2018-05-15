@@ -70,25 +70,35 @@ function readFile(evt) {
 function process(){
 
 	  if (document.getElementById('class').checked){
-	      getClasses();
+	      getClassesCSS();
 	  }
 	  if (document.getElementById('id').checked){
-	      getIds();
+	      getIdsCSS();
 	  }
 }
-function getClasses(){
-      alert("in getClasses");
+function getClassesCSS(){
+       alert("in getClassesCSS");
 	  //  alert( /\..*{/.exec(cssText));
-	  var regexpC = /\..*{/g;
-	  var classList = cssText.match(regexpC);
-	  alert(classList);
+	  var regexpC = /\..*{/g;   // get strings that start with . and end with {
+	  var classListCSS = cssText.match(regexpC);
+	  alert(classListCSS);
+	  for (var i=0; i<classListCSS.length; i++){
+	      classListCSS[i] = classListCSS[i].substr(1);   //remove .
+		  classListCSS[i] = classListCSS[i].slice(0,-1);  // remove {
+	  }
+	  alert(classListCSS);
 }
-function getIds(){
-       alert("in getIds");
+function getIdsCSS(){
+      alert("in getIdsCSS");
 	  //  alert( /#.*{/.exec(cssText));
-	   var regexpI = /#.*{/g;
-	   var idList = cssText.match(regexpI);
-	   alert(idList);
+	   var regexpI = /#.*{/g;   // get strings that start with # and end with {
+	   var idListCSS = cssText.match(regexpI);
+	   alert(idListCSS);
+	   for (var i=0; i<idListCSS.length; i++){
+	      idListCSS[i] = idListCSS[i].substr(1);   //remove #
+		  idListCSS[i] = idListCSS[i].slice(0,-1);  // remove {
+	  }
+	  alert(idListCSS);
 }
   
 </script>
