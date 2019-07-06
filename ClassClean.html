@@ -32,6 +32,7 @@
 	<div class="button-box">
 	        <input type="button" class="process-btn" id="test" value="Process" onClick="process()">
 	</div>
+	<div class="upload" id="upload"> </div>
 
 <script type="text/javascript">
 var cssText = "";
@@ -52,11 +53,11 @@ function readFile(evt) {
 			  
 			  if(fileType.indexOf("css") !== -1){
 				  cssText = contents;
-				  alert(cssText);
+				 // alert(cssText);
 			  }
 			  else if (fileType.indexOf("html") !== -1){
 				  htmlText = contents;
-				  alert(htmlText);
+				  //alert(htmlText);
 			  }
 		
 		  }
@@ -71,6 +72,7 @@ function process(){
 
 	  if (document.getElementById('class').checked){
 	      getClassesCSS();
+		  getClassesHTML();
 	  }
 	  if (document.getElementById('id').checked){
 	      getIdsCSS();
@@ -78,7 +80,6 @@ function process(){
 }
 function getClassesCSS(){
        alert("in getClassesCSS");
-	  //  alert( /\..*{/.exec(cssText));
 	  var regexpC = /\..*{/g;   // get strings that start with . and end with {
 	  var classListCSS = cssText.match(regexpC);
 	  alert(classListCSS);
@@ -88,9 +89,35 @@ function getClassesCSS(){
 	  }
 	  alert(classListCSS);
 }
+
+function getClassesHTML(){
+      alert("in getClassesHTML");
+	var allClasses = [];
+	
+	/* Text of html file is printed on screen because that is the only way to get the
+	   querySelectAll to pick all the classes out of it successfully. A display: none
+	   in the CSS prevents it from actually appearing on the screen. Hopefully, a more
+	   efficient solution will be found later.
+	*/
+	document.getElementById('upload').innerHTML = htmlText;
+    var allElements = document.getElementById("upload").querySelectorAll('*');
+
+	for (var i = 0; i < allElements.length; i++) {
+		  var classes = allElements[i].className.toString().split(/\s+/);
+		  for (var j = 0; j < classes.length; j++) {
+				var cls = classes[j];
+				if (cls && allClasses.indexOf(cls) === -1)
+				 allClasses.push(cls);
+		  }
+	}
+alert(`array length = ${allClasses.length}`);
+alert(`allClasses: ${allClasses}`);
+console.log(allClasses);
+
+}
+
 function getIdsCSS(){
       alert("in getIdsCSS");
-	  //  alert( /#.*{/.exec(cssText));
 	   var regexpI = /#.*{/g;   // get strings that start with # and end with {
 	   var idListCSS = cssText.match(regexpI);
 	   alert(idListCSS);

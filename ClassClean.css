@@ -52,7 +52,9 @@ input[type='checkbox'] {
 	height: 1.7em;
 	width: 6em;
 }
-
+.upload{
+	display: none;
+}
 @media screen and (min-width: 280px) 
 {
    input[type='checkbox'] {	  
