@@ -76,6 +76,7 @@ function process(){
 	  }
 	  if (document.getElementById('id').checked){
 	      getIdsCSS();
+		  getIdsHTML();
 	  }
 }
 function getClassesCSS(){
@@ -92,7 +93,7 @@ function getClassesCSS(){
 
 function getClassesHTML(){
       alert("in getClassesHTML");
-	var allClasses = [];
+	var classListHTML = [];
 	
 	/* Text of html file is printed on screen because that is the only way to get the
 	   querySelectAll to pick all the classes out of it successfully. A display: none
@@ -106,15 +107,15 @@ function getClassesHTML(){
 		  var classes = allElements[i].className.toString().split(/\s+/);
 		  for (var j = 0; j < classes.length; j++) {
 				var cls = classes[j];
-				if (cls && allClasses.indexOf(cls) === -1)
-				 allClasses.push(cls);
+				if (cls && classListHTML.indexOf(cls) === -1)
+				 classListHTML.push(cls);
 		  }
 	}
-alert(`array length = ${allClasses.length}`);
-alert(`allClasses: ${allClasses}`);
-console.log(allClasses);
-
+alert(`array length = ${classListHTML.length}`);
+alert(`classListHTML: ${classListHTML}`);
+console.log(classListHTML);
 }
+
 
 function getIdsCSS(){
       alert("in getIdsCSS");
@@ -126,6 +127,19 @@ function getIdsCSS(){
 		  idListCSS[i] = idListCSS[i].slice(0,-1);  // remove {
 	  }
 	  alert(idListCSS);
+}
+
+function getIdsHTML(){
+     alert("in getIdsHTML");
+     var idListHTML = [];    
+	 
+	 idListHTML = document.querySelectorAll('*[id]');
+	 
+	 for (var i = 0; i < idListHTML.length; i++){
+	      console.log(idListHTML[i].id);
+	 }
+	 
+	 console.log(idListHTML);
 }
   
 </script>
