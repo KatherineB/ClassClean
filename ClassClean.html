@@ -71,12 +71,14 @@ function readFile(evt) {
 function process(){
 
 	  if (document.getElementById('class').checked){
-	      getClassesCSS();
-		  getClassesHTML();
+	      var classListCSS = getClassesCSS();
+		  var classListHTML = getClassesHTML();
+		  searchForClasses(classListCSS,classListHTML);
 	  }
 	  if (document.getElementById('id').checked){
-	      getIdsCSS();
-		  getIdsHTML();
+	      var idListCSS = getIdsCSS();
+		  var idListHTML = getIdsHTML();
+		  searchForIds(idListCSS,idListHTML);
 	  }
 }
 function getClassesCSS(){
@@ -89,6 +91,7 @@ function getClassesCSS(){
 		  classListCSS[i] = classListCSS[i].slice(0,-1);  // remove {
 	  }
 	  alert(classListCSS);
+	  return classListCSS;
 }
 
 function getClassesHTML(){
@@ -114,6 +117,7 @@ function getClassesHTML(){
 alert(`array length = ${classListHTML.length}`);
 alert(`classListHTML: ${classListHTML}`);
 console.log(classListHTML);
+     return classListHTML;
 }
 
 
@@ -127,22 +131,50 @@ function getIdsCSS(){
 		  idListCSS[i] = idListCSS[i].slice(0,-1);  // remove {
 	  }
 	  alert(idListCSS);
+	  return idListCSS;
 }
 
 function getIdsHTML(){
      alert("in getIdsHTML");
      var idListHTML = [];    
 	 
-	 idListHTML = document.querySelectorAll('*[id]');
+	 idNodeListHTML = document.querySelectorAll('*[id]');
 	 
-	 for (var i = 0; i < idListHTML.length; i++){
-	      console.log(idListHTML[i].id);
+	 for (var i = 0; i < idNodeListHTML.length; i++){
+	      idListHTML.push(idNodeListHTML[i].id);
+	      console.log(idListHTML[i]);
 	 }
 	 
 	 console.log(idListHTML);
+	 return idListHTML;
+}
+
+function searchForClasses(classListCSS,classListHTML){
+    alert("in searchforClasses");
+	console.log(classListCSS);
+	console.log(classListHTML);
+	
+	classesNotInHTML = classListCSS.filter(function(item){
+       return !(classListHTML.includes(item));
+    });
+	
+	console.log(classesNotInHTML);
+}
+
+function searchForIds(idListCSS,idListHTML){
+    alert("in searchforIds");
+	console.log(idListCSS);
+	console.log(idListHTML);
+	
+	idsNotInHTML = idListCSS.filter(function(item){
+       return !(idListHTML.includes(item));
+    });
+	
+	console.log(idsNotInHTML);
 }
   
 </script>
 
 </body>
 </html>
+
